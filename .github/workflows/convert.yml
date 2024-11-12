@@ -39,7 +39,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: markdown  # The name of the artifact to download
-          path: ./markdown  # Local path to save the downloaded artifact
+          path: ./markdown.zip  # Local path to save the downloaded artifact
 
       # Step 2: Generate a random tag (using the current timestamp)
       - name: Generate random tag
@@ -68,6 +68,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./markdown  # Path to the downloaded artifact
+          asset_path: ./markdown.zip  # Path to the downloaded artifact
           asset_name: markdown.zip  # Rename as needed
           asset_content_type: application/zip
