@@ -14,17 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - uses: baileyjm02/markdown-to-pdf@v1
-      #   with:
-      #     input_dir: docs
-      #     output_dir: pdfs
-      #     images_dir: docs/images
-      #     image_import: ./images
-      #     build_html: false
+      - uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: docs
+          output_dir: pdfs
+          images_dir: docs/images
+          image_import: ./images
+          build_html: false
       - uses: actions/upload-artifact@v3
         with:
-          name: markdown
-          path: docs
+          name: export
+          path: pdfs
 
   release:
     name: Download Artifact and Create Release
@@ -36,8 +36,8 @@ jobs:
       - name: Download markdown artifact
         uses: actions/download-artifact@v3
         with:
-          name: markdown  # The name of the artifact to download
-          path: ./markdown  # Local path to save the downloaded artifact
+          name: export  # The name of the artifact to download
+          path: ./export  # Local path to save the downloaded artifact
 
       # Step 2: Generate a random tag (using the current timestamp)
       - name: Generate random tag
@@ -66,6 +66,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./markdown/manual.md
-          asset_name: manual.md
-          asset_content_type: text/markdown
+          asset_path: ./export/manual.pdf
+          asset_name: manual.pdf
+          asset_content_type: application/pdf
+      - name: Upload markdown to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./export/terms.pdf
+          asset_name: terms.pdf
+          asset_content_type: application/pdf  
