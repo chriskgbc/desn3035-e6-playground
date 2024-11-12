@@ -59,7 +59,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls
       - name: Upload markdown to Release
         uses: actions/upload-release-asset@v1
         env:
@@ -68,3 +68,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./*  # Path to the downloaded artifact
           asset_name: release
+          asset_content_type: application/zip
