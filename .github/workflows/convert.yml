@@ -28,7 +28,7 @@ jobs:
           name: markdown
           path: docs
 
- create-release:
+  release:
     name: Download Artifact and Create Release
     runs-on: ubuntu-latest
 
