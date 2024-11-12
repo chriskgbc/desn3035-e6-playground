@@ -69,8 +69,3 @@ jobs:
           asset_path: ./markdown/manual.md
           asset_name: manual.md
           asset_content_type: text/markdown
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./markdown/terms.md
-          asset_name: terms.md
-          asset_content_type: text/markdown      
