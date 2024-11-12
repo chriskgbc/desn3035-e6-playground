@@ -31,6 +31,7 @@ jobs:
   release:
     name: Download Artifact and Create Release
     runs-on: ubuntu-latest
+    needs: converttopdf
 
     steps:
       # Step 1: Download the "markdown" artifact from a previous workflow run
