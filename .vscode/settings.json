@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-action.json": "file:///workspaces/desn3035-e6-playground/.github/workflows/convert.yml"
+    }
+}
