@@ -1,11 +1,9 @@
 name: Docs to PDF
 
 on:
-  workflow_dispatch:
-  # Uncomment this section if you want the action to run on push to the main branch
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   #   paths:
   #     - 'docs/**.md'
   #     - 'docs/images/**'
